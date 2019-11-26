@@ -41,7 +41,7 @@ public class HelloController {
 
         }
 
-        return new ResponsePojo("Greetings from test-app-1 using Spring Boot 1.5", counter.incrementAndGet());
+        return new ResponsePojo("Level 2 Response", counter.incrementAndGet());
     }
     
 }
