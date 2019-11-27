@@ -54,6 +54,12 @@
     <version>1.7.25</version>
 </dependency>
 <!--/End Open Tracing-->
+
+<dependency>
+  <groupId>io.opentracing.contrib</groupId>
+  <artifactId>opentracing-spring-cloud-starter</artifactId>
+  <version>0.2.6</version>
+</dependency>
 	</dependencies>
 
 	<build>

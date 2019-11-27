@@ -8,15 +8,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+
 @RestController
 public class LevelTwoController {
 
-    private static final String template = "Level2, %s!";
+    private static final String layer = "layer2";
+    
+    private static final String template = layer+", %s!";
     private final AtomicLong counter = new AtomicLong();
    
+    String url = "http://localhost:8083/api"; // TODO: env config
+
     @Autowired
     private RestTemplate restTemplate; 
-    String url = "http://localhost:8083/api"; // TODO: env config
     
     @RequestMapping("/api")
     public Greeting greeting(@RequestParam(value="name", defaultValue="level2Default") String name) {

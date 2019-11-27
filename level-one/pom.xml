@@ -52,6 +52,12 @@
     <artifactId>slf4j-simple</artifactId>
     <version>1.7.25</version>
 </dependency>
+
+<dependency>
+  <groupId>io.opentracing.contrib</groupId>
+  <artifactId>opentracing-spring-cloud-starter</artifactId>
+  <version>0.2.6</version>
+</dependency>
 <!--/End Open Tracing-->
 	</dependencies>
 
