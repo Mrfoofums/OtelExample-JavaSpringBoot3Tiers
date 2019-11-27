@@ -1,4 +1,4 @@
-## Descirption
+## Description
 Level One is a Spring cloud app instrumented using the SDK
 * mvn spring-boot:run
 
