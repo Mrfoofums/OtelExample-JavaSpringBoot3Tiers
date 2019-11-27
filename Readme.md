@@ -1,2 +1,6 @@
-## For our agent
-java -javaagent:dd-java-agent.jar -dd.agent.host=<localhost> -dd.trace.agent.port=<9111> -Ddd.propagation.style.inject=B3 -Ddd.propagation.style.extract=B3 -jar target/level-two-1.jar
+## Descirption
+Level One is a Spring cloud app instrumented using teh SDK
+Level Two is instrumented using the DD agent
+Level Three is instrumented using the SDK again
+
+B3 propagation should tie everything together.
