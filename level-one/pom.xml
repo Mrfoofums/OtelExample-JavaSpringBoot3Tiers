@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.forrest</groupId>
-	<artifactId>level-three</artifactId>
+	<artifactId>level-one</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
@@ -36,13 +36,12 @@
 			</exclusions>
 		</dependency>
 
-		
 		<!--Open Tracing-->
 		<dependency>
     	<groupId>com.lightstep.tracer</groupId>
-    		<artifactId>lightstep-tracer-jre</artifactId>
-   		    <version>0.15.1</version>
-         </dependency>
+    <artifactId>lightstep-tracer-jre</artifactId>
+    <version>0.15.1</version>
+</dependency>
 <dependency>
    <groupId>com.lightstep.tracer</groupId>
    <artifactId>tracer-okhttp</artifactId>
