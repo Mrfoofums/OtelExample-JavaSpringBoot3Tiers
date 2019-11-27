@@ -26,7 +26,7 @@ public class TracingConfig {
                          .withPropagator(Format.Builtin.HTTP_HEADERS, propagator)
                          .withPropagator(Format.Builtin.TEXT_MAP, propagator)
                          .withVerbosity(4)
-                       .withCollectorHost("192.168.1.3")
+                       .withCollectorHost("localhost")
                        .withCollectorPort(9111)
                        .withCollectorProtocol("http")
                         .build());
