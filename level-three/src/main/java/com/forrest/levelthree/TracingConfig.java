@@ -26,9 +26,9 @@ public class TracingConfig {
                          .withPropagator(Format.Builtin.HTTP_HEADERS, propagator)
                          .withPropagator(Format.Builtin.TEXT_MAP, propagator)
                          .withVerbosity(4)
-//                        .withCollectorHost("localhost")
-//                        .withCollectorPort(8360)
-//                        .withCollectorProtocol("http")
+                       .withCollectorHost("localhost")
+                       .withCollectorPort(9111)
+                       .withCollectorProtocol("http")
                         .build());
     }
 }
