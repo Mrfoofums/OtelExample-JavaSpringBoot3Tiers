@@ -12,6 +12,6 @@ B3 propagation should tie everything together, but it's only working from level 
 
 This means either
 1. DD isn't extracting headers properly
-2. We aren't setting headers properly for extraction
+2. DD header byte size is different*
 
 
