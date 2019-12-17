@@ -8,10 +8,12 @@ Level Two is instrumented using the DD agent
 Level Three is instrumented using the SDK again
 * mvn spring-boot:run
 
+Run the satellite
+* docker-compose up -d 
+
 B3 propagation should tie everything together, but it's only working from level 2 to 3.
 
 This means either
-1. DD isn't extracting headers properly
-2. We aren't setting headers properly for extraction
+1. The DD tracer is throwing an exception during extraction in B3HttpCodex ln 142. Captured in Jira.
 
 
