@@ -37,7 +37,7 @@ public class LevelOneController {
     }
 
     public Greeting callNextLayer(){
-        Span span = tracer.scopeManager().active().span();
+        Span span = tracer.scopeManager().activeSpan();
         span.setTag("layer",layer);
         Greeting response = restTemplate.getForObject(url, Greeting.class);
         span.setTag("response", response.getContent());
