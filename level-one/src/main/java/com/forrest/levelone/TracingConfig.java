@@ -21,10 +21,10 @@ public class TracingConfig {
         B3Propagator propagator = new B3Propagator();
         return new com.lightstep.tracer.jre.JRETracer(
                 new com.lightstep.tracer.shared.Options.OptionsBuilder()
-                        .withComponentName("Level 1 SDK Instrumented")
-                        .withAccessToken("qYVqBuZ2QCMskFNzwPC0HjWUx1tADk0XJhZ35YGv276BEWn6tEWSOpgqFu2e7W+jw+HbSaTL3r3x3SO96qNGxhRPh+gjoupgmIYhb1mV")
-                         .withPropagator(Format.Builtin.HTTP_HEADERS, propagator)
-                         .withPropagator(Format.Builtin.TEXT_MAP, propagator)
+                        .withComponentName("l1-service")
+                        .withAccessToken("<access_token>")
+                         .withPropagator(Format.Builtin.TEXT_MAP_INJECT, propagator)
+                         .withPropagator(Format.Builtin.TEXT_MAP_EXTRACT, propagator)
                          .withVerbosity(4)
                        .withCollectorHost("localhost")
                        .withCollectorPort(9111)

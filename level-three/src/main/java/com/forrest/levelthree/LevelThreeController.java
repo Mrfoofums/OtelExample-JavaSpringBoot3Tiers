@@ -24,7 +24,7 @@ public class LevelThreeController {
     @RequestMapping("/api")
     public Greeting greeting(@RequestParam(value="name", defaultValue="level3Default") String name) {
        
-        Span span = tracer.scopeManager().active().span();
+        Span span = tracer.scopeManager().activeSpan();
         span.setTag("layer",layer);
         // Return the response from all of the other layers
         return new Greeting(counter.incrementAndGet(),
