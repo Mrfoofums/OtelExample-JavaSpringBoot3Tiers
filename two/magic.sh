@@ -1,8 +1,9 @@
 java -Dsa.tracer=lightstep \
--Dls.collectorHost=`localhost` \
--Dls.collectorProtocol=http \
--Dls.collectorPort=1980 \
--Dls.accessToken=XyE9AymrZ8GqaiPl6fGD2d3eRi5YnID52Y6aLGFHLb+2K3ZUPBjJjyhAWsH0/TBLnThw7hwHpa8Mh/AEOW79j6G5nznKdGVwoCHJcnl4 \
--Dls.componentName=`Level 2` \
--javaagent:/PATH/TO/YOUR/opentracing-specialagent-1.5.8.jar \
+-Dls.collectorHost=ingest.lightstep.com  \
+-Dls.collectorProtocol=https \
+-Dls.collectorPort=443 \
+-Dls.accessToken=qYVqBuZ2QCMskFNzwPC0HjWUx1tADk0XJhZ35YGv276BEWn6tEWSOpgqFu2e7W+jw+HbSaTL3r3x3SO96qNGxhRPh+gjoupgmIYhb1mV \
+-Dls.componentName=two \
+-Dls.propagator=b3 \
+-javaagent:opentracing-specialagent-1.5.8.jar \
 -jar level-two-1.jar
