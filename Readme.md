@@ -2,7 +2,7 @@
 Level One is a Spring cloud app instrumented using the SDK
 * `./run.sh` to run
 
-Level Two is instrumented using the DD agent
+Level Two is instrumented using the Otel Special Agent
 * `./magic.sh` to run
 
 Level Three is instrumented using the SDK again
