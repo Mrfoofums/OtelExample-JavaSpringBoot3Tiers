@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import io.opentracing.Span;
-import io.opentracing.Tracer;
 
 @RestController
 public class LevelOneController {
@@ -24,9 +22,7 @@ public class LevelOneController {
 
     @Autowired
     private RestTemplate restTemplate; 
-
-    @Autowired
-    private Tracer tracer;   
+   
     
     @RequestMapping("/api")
     public Greeting greeting(@RequestParam(value="name", defaultValue="level1Default") String name) {
@@ -37,10 +33,7 @@ public class LevelOneController {
     }
 
     public Greeting callNextLayer(){
-        Span span = tracer.scopeManager().activeSpan();
-        span.setTag("layer",layer);
         Greeting response = restTemplate.getForObject(url, Greeting.class);
-        span.setTag("response", response.getContent());
         return response;
     }
 
