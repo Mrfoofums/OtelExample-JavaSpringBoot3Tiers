@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import io.opentelemetry.context.Scope;
+import io.opentelemetry.trace.Span;
+import io.opentelemetry.trace.Tracer;
+
 
 @RestController
 public class LevelTwoController {
@@ -21,10 +25,13 @@ public class LevelTwoController {
 
     @Autowired
     private RestTemplate restTemplate; 
+
+    @Autowired
+    Tracer tracer;
     
     @RequestMapping("/api")
     public Greeting greeting(@RequestParam(value="name", defaultValue="level2Default") String name) {
-
+        AnAbstractClass();
         // Return the response from all of the other layers
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, callNextLayer().getContent()));
@@ -33,5 +40,11 @@ public class LevelTwoController {
     public Greeting callNextLayer(){
         Greeting response = restTemplate.getForObject(url, Greeting.class);
         return response;
+    }
+
+    public void AnAbstractClass(){
+        Span span = tracer.spanBuilder("aSpan").startSpan();
+        span.setAttribute("lightstep.component_name", "fakeComponent");
+        span.end();
     }
 }

@@ -36,6 +36,51 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+      		<groupId>io.opentelemetry</groupId>
+     		<artifactId>opentelemetry-api</artifactId>
+      		<version>0.2.0</version>
+        </dependency>
+		<dependency>
+      		<groupId>io.opentelemetry</groupId>
+     		<artifactId>opentelemetry-sdk</artifactId>
+      		<version>0.2.0</version>
+        </dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporters-logging</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporters-jaeger</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lightstep.opentelemetry</groupId>
+			<artifactId>lightstep-opentelemetry-auto-exporter</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>com.lightstep.opentelemetry</groupId>
+			<artifactId>lightstep-opentelemetry-exporter</artifactId>
+			<version>0.1.0</version>
+		</dependency> -->
+
+			<!-- <dependency>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-protobuf</artifactId>
+			<version>1.27.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-netty</artifactId>
+			<version>1.27.2</version>
+		</dependency> -->
+
+
 	</dependencies>
 
 	<build>
