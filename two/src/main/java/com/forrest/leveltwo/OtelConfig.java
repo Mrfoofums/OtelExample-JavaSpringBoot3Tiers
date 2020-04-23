@@ -23,24 +23,20 @@ public class OtelConfig {
 
     @Bean
     public Tracer otelTracer() throws Exception{
-        final Tracer tracer = OpenTelemetry.getTracerFactory().get("com.otel.woo");
-
-        SpanProcessor logProcessor = SimpleSpansProcessor.newBuilder(new LoggingExporter()).build();
+        final Tracer tracer = OpenTelemetry.getTracerProvider().get("com.otel.woo");
+        
+        SpanProcessor logProcessor = SimpleSpansProcessor.newBuilder(new LoggingSpanExporter()).build();
 
        SpanProcessor lightstepProcessor = BatchSpansProcessor.newBuilder(LightstepSpanExporter.newBuilder()
         .setAccessToken("qYVqBuZ2QCMskFNzwPC0HjWUx1tADk0XJhZ35YGv276BEWn6tEWSOpgqFu2e7W+jw+HbSaTL3r3x3SO96qNGxhRPh+gjoupgmIYhb1mV")
-        .setCollectorHost("collector-grpc.lightstep.com")
-        .setCollectorPort(443)
-        .setCollectorProtocol("https")
-        .setComponentName("aComponent")
+        // .setCollectorHost("collector-grpc.lightstep.com")
+        // .setCollectorPort(443)
+        // .setCollectorProtocol("https")
+        .setServiceName("two")
         .build()).build();
 
-        // SimpleSpansProcessor lightstepProcessor = SimpleSpansProcessor.newBuilder(LightstepSpanExporter.Builder.fromEnv().build()).build();
-
-        // OpenTelemetrySdk.getTracerFactory().addSpanProcessor(logProcessor);
-        OpenTelemetrySdk.getTracerFactory().addSpanProcessor(lightstepProcessor);
-        // OpenTelemetrySdk.getTracerFactory().addSpanProcessor(jaegerProcessor);
-
+        OpenTelemetrySdk.getTracerProvider().addSpanProcessor(lightstepProcessor);
+        OpenTelemetrySdk.getTracerProvider().addSpanProcessor(logProcessor);
         return tracer;
     }
 }

@@ -39,35 +39,35 @@
 		<dependency>
       		<groupId>io.opentelemetry</groupId>
      		<artifactId>opentelemetry-api</artifactId>
-      		<version>0.2.0</version>
+      		<version>0.3.0</version>
         </dependency>
 		<dependency>
       		<groupId>io.opentelemetry</groupId>
      		<artifactId>opentelemetry-sdk</artifactId>
-      		<version>0.2.0</version>
+      		<version>0.3.0</version>
         </dependency>
 		<dependency>
 			<groupId>io.opentelemetry</groupId>
 			<artifactId>opentelemetry-exporters-logging</artifactId>
-			<version>0.2.0</version>
+			<version>0.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.opentelemetry</groupId>
 			<artifactId>opentelemetry-exporters-jaeger</artifactId>
-			<version>0.2.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.lightstep.opentelemetry</groupId>
-			<artifactId>lightstep-opentelemetry-auto-exporter</artifactId>
-			<version>0.2.0</version>
+			<version>0.3.0</version>
 		</dependency>
 
 		<!-- <dependency>
 			<groupId>com.lightstep.opentelemetry</groupId>
-			<artifactId>lightstep-opentelemetry-exporter</artifactId>
-			<version>0.1.0</version>
+			<artifactId>lightstep-opentelemetry-auto-exporter</artifactId>
+			<version>0.2.0</version>
 		</dependency> -->
+
+		<dependency>
+			<groupId>com.lightstep.opentelemetry</groupId>
+			<artifactId>lightstep-opentelemetry-exporter</artifactId>
+			<version>0.2.1</version>
+		</dependency>
 
 			<!-- <dependency>
 			<groupId>io.grpc</groupId>

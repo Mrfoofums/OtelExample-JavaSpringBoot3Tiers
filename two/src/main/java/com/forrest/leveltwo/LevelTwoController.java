@@ -31,7 +31,11 @@ public class LevelTwoController {
     
     @RequestMapping("/api")
     public Greeting greeting(@RequestParam(value="name", defaultValue="level2Default") String name) {
+        Span span = tracer.spanBuilder("GreetingManualSpan").startSpan();
+        tracer.withSpan(span);
         AnAbstractClass();
+        span.end();
+
         // Return the response from all of the other layers
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, callNextLayer().getContent()));
@@ -43,7 +47,7 @@ public class LevelTwoController {
     }
 
     public void AnAbstractClass(){
-        Span span = tracer.spanBuilder("aSpan").startSpan();
+        Span span = tracer.spanBuilder("randomNestedSPan").startSpan();
         span.setAttribute("lightstep.component_name", "fakeComponent");
         span.end();
     }
