@@ -13,7 +13,7 @@ import io.opentelemetry.sdk.trace.export.SimpleSpansProcessor;
 import io.opentelemetry.trace.Tracer;
 import io.opentelemetry.exporters.logging.*;
 
-import com.lightstep.opentelemetry.exporter.LightstepSpanExporter;
+// import com.lightstep.opentelemetry.exporter.LightstepSpanExporter;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
@@ -23,20 +23,21 @@ public class OtelConfig {
 
     @Bean
     public Tracer otelTracer() throws Exception{
-        final Tracer tracer = OpenTelemetry.getTracerProvider().get("com.otel.woo");
+        final Tracer tracer = OpenTelemetry.getTracerProvider().get("com.otel.forrest");
         
-        SpanProcessor logProcessor = SimpleSpansProcessor.newBuilder(new LoggingSpanExporter()).build();
+    //     SpanProcessor logProcessor = SimpleSpansProcessor.newBuilder(new LoggingSpanExporter()).build();
 
-       SpanProcessor lightstepProcessor = BatchSpansProcessor.newBuilder(LightstepSpanExporter.newBuilder()
-        .setAccessToken("qYVqBuZ2QCMskFNzwPC0HjWUx1tADk0XJhZ35YGv276BEWn6tEWSOpgqFu2e7W+jw+HbSaTL3r3x3SO96qNGxhRPh+gjoupgmIYhb1mV")
-        // .setCollectorHost("collector-grpc.lightstep.com")
-        // .setCollectorPort(443)
-        // .setCollectorProtocol("https")
-        .setServiceName("two")
-        .build()).build();
+    //    SpanProcessor lightstepProcessor = BatchSpansProcessor.newBuilder(LightstepSpanExporter.newBuilder()
+    //     .setAccessToken("qYVqBuZ2QCMskFNzwPC0HjWUx1tADk0XJhZ35YGv276BEWn6tEWSOpgqFu2e7W+jw+HbSaTL3r3x3SO96qNGxhRPh+gjoupgmIYhb1mV")
+    //     // .setCollectorHost("collector-grpc.lightstep.com")
+    //     // .setCollectorPort(443)
+    //     // .setCollectorProtocol("https")
+    //     .setServiceVersion("1")
+    //     .setServiceName("two")
+    //     .build()).build();
 
-        OpenTelemetrySdk.getTracerProvider().addSpanProcessor(lightstepProcessor);
-        OpenTelemetrySdk.getTracerProvider().addSpanProcessor(logProcessor);
+        // OpenTelemetrySdk.getTracerProvider().addSpanProcessor(lightstepProcessor);
+        // OpenTelemetrySdk.getTracerProvider().addSpanProcessor(logProcessor);
         return tracer;
     }
 }
