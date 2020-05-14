@@ -7,12 +7,18 @@ YOU should definitely learn about distributed tracing, its not nearly as complic
 
 Level One is a Spring cloud app instrumented using the Otel Agent
 * Do `./one.sh` to run within /one
+* Hit this via `localhost:80801/api`
+* This calls layer 2 and doesn't ahve exception handling so make sure 2 is running!
 
 Level Two is instrumented using the Otel Special Agent and manual spans
 * Do `./two.sh` to run within /two
+*  Hit this via `localhost:8082/api`
+*  This calls layer 3 and doesn't ahve exception handling so make sure 3 is running!
 
 Level Three is instrumented using the Otel Agent
 * Do `./three.sh` to run within /three
+* Hit this via `localhost:8083/api`
+* This just exist, feel free to run it solo!
 
 ### Things you need to know
 1) Have a lightstep account. Create a free trial account here: [lightstep](https://go.lightstep.com/trial)
