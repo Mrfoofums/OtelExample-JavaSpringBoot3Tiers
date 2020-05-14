@@ -56,7 +56,7 @@ public class LevelTwoController {
 
     public void someLoop(){
         for(int i = 0; i<50; i++){
-            Span span = tracer.spanBuilder("BensLoop").setParent(tracer.getCurrentSpan()).startSpan();
+            Span span = tracer.spanBuilder("fastOperation").setParent(tracer.getCurrentSpan()).startSpan();
 
             span.setAttribute("iteration", i);
             span.end();
