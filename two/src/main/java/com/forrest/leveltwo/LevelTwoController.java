@@ -33,6 +33,7 @@ public class LevelTwoController {
     public Greeting greeting(@RequestParam(value="name", defaultValue="level2Default") String name) {
         Span span = tracer.spanBuilder("GreetingManualSpan").startSpan();
         tracer.withSpan(span);
+        someLoop();
         AnAbstractClass();
         span.end();
 
@@ -50,5 +51,15 @@ public class LevelTwoController {
         Span span = tracer.spanBuilder("randomNestedSPan").startSpan();
         span.setAttribute("lightstep.component_name", "fakeComponent");
         span.end();
+    }
+
+
+    public void someLoop(){
+        for(int i = 0; i<50; i++){
+            Span span = tracer.spanBuilder("BensLoop").setParent(tracer.getCurrentSpan()).startSpan();
+
+            span.setAttribute("iteration", i);
+            span.end();
+        }
     }
 }
