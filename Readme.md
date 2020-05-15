@@ -7,7 +7,7 @@ YOU should definitely learn about distributed tracing, its not nearly as complic
 
 Level One is a Spring cloud app instrumented using the Otel Agent
 * Do `./one.sh` to run within /one
-* Hit this via `localhost:80801/api`
+* Hit this via `localhost:8081/api`
 * This calls layer 2 and doesn't have exception handling so make sure 2 is running!
 
 Level Two is instrumented using the Otel Special Agent and manual spans
