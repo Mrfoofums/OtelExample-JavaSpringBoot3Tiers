@@ -50,12 +50,13 @@ public class LevelTwoController {
     public void AnAbstractClass(){
         Span span = tracer.spanBuilder("randomNestedSPan").startSpan();
         span.setAttribute("lightstep.component_name", "fakeComponent");
+        span.addEvent("You can create services inline using the tag \"lighstep.component_name\"");
         span.end();
     }
 
 
     public void someLoop(){
-        for(int i = 0; i<50; i++){
+        for(int i = 0; i<4; i++){
             Span span = tracer.spanBuilder("fastOperation").setParent(tracer.getCurrentSpan()).startSpan();
 
             span.setAttribute("iteration", i);
