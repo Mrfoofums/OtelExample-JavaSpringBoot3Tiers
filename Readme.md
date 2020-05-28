@@ -30,6 +30,11 @@ Send me an email at forrest@Lightstep.com
 
 I will provide the help.
 
+Or File an issue and I'll get on it.
+
+# Known issues
+An exception is thrown due to the way the manual and auto instrumentation mixing changes from 0.2.0 to 0.3.0, but it functionally works. Will fix soon
+
 
 
 
