@@ -33,8 +33,14 @@ public class LevelOneController {
     }
 
     public Greeting callNextLayer(){
-        Greeting response = restTemplate.getForObject(url, Greeting.class);
-        return response;
+        try{
+             Greeting response = restTemplate.getForObject(url, Greeting.class);
+             return response;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return new Greeting(0, "Error communicating to downstream service, make sure it is running and check your logs");
+        }
     }
 
 }
