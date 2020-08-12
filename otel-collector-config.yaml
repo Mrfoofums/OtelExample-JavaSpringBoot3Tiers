@@ -1,0 +1,20 @@
+receivers:
+    otlp/http:
+      protocols:
+        http:
+          endpoint: "localhost:55681"
+
+exporters:
+    otlp:
+      endpoint: ingest.lightstep.com:443
+
+processors:
+  batch:
+  queued_retry:
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch, queued_retry]
+      exporters: [otlp]
