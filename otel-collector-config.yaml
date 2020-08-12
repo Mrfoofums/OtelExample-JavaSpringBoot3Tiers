@@ -1,20 +1,30 @@
 receivers:
-    otlp/http:
-      protocols:
-        http:
-          endpoint: "localhost:55681"
-
-exporters:
-    otlp:
-      endpoint: ingest.lightstep.com:443
-
+  otlp:
+    protocols:
+      grpc:
 processors:
-  batch:
+  # batch:
+  # memory_limiter:
+  #   ballast_size_mib: 700
+  #   limit_mib: 1500
+  #   spike_limit_mib: 100
+  #   check_interval: 5s
   queued_retry:
-
+extensions:
+  health_check: {}
+exporters:
+  logging:
+    loglevel: debug
+    sampling_initial: 10
+    sampling_thereafter: 1
+  otlp:
+    endpoint: "ingest.lightstep.com:443"
+    headers:
+      "lightstep-access-token": "6how6J0/2q4Dqxo6VYi6CKXwQJARSmcvydZYNIpti97UAsyjiCbH1aKTp3VoealzQouMtY0FA0xuwvDQhYJFU87fXMngEWngSxDKCSsI"
 service:
+  extensions: [health_check]
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch, queued_retry]
-      exporters: [otlp]
+      processors: [ queued_retry]
+      exporters: [otlp, logging]
