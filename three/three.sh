@@ -1,5 +1,5 @@
 rm -r ./target
-mvn package
+./mvnw package
 
 # The access Token is only necessary if you bypass the collector and send data directly to a satellite. To be clear, we are not doing that here. Reference: https://github.com/lightstep/otel-launcher-java
 # export LS_ACCESS_TOKEN=
