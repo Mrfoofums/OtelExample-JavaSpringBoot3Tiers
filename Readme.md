@@ -3,6 +3,15 @@ This repository is a working example in how to instrument 3 Java Spring Boot ser
 
 These services are VERY simple. All they do is return a simple greeting object(basically verbatim what is in the Spring Docs).
 
+### Where to define our Data
+There are a number of environment variables and meta data that we need to define, and there are two primary places to define it, assuming you are using a collector which we are here.
+1) At application startup
+2) Within the Collector
+
+In general, we want to avoid restarting our services to update values, but some values should be updated on service restart such as `service.version`.
+
+Keeping that generally in mind
+
 YOU should definitely learn about distributed tracing, its not nearly as complicated as it seems, but conversely is exceptionally powerful in providing insights to us as software engineers of increasing complex platforms!
 
 Level One is a Spring cloud app instrumented using the Otel Agent

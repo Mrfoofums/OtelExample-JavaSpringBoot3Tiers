@@ -1,10 +1,12 @@
 rm -r ./target
 mvn package
 
-# export LS_ACCESS_TOKEN=6how6J0/2q4Dqxo6VYi6CKXwQJARSmcvydZYNIpti97UAsyjiCbH1aKTp3VoealzQouMtY0FA0xuwvDQhYJFU87fXMngEWngSxDKCSsI
+# The access Token is only necessary if you bypass the collector and send data directly to a satellite. To be clear, we are not doing that here. Reference: https://github.com/lightstep/otel-launcher-java
+# export LS_ACCESS_TOKEN=
+export LS_SERVICE_VERSION=0.1.0
+export LS_SERVICE_NAME="Level-Three"
+export OTEL_EXPORTER_OTLP_SPAN_ENDPOINT=0.0.0.0:55680
+export OTEL_EXPORTER_OTLP_SPAN_INSECURE=true
 
 java -javaagent:lightstep-opentelemetry-javaagent-0.7.1.jar \
-     -Dls.service.name="Level Three" \
-     -Dotel.exporter.otlp.span.endpoint=localhost:55680 \
-     -Dotel.exporter.otlp.span.insecure=true \
      -jar ./target/level-three-0.0.1-SNAPSHOT.jar
