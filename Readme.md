@@ -17,7 +17,10 @@ In general, we want to avoid restarting our services to update values, but some 
 With that in mind, we will set everything about our service within our service startup scripts and put the `ACCESS_TOKEN` in the collector config. check out `otel-collector-config` for reference.
 
 # How to run
-Run layers one, two, and three with their respective scripts. These scripts can be found in each service directory. Each of them can run independently but just throw errors when the downstream service isn't running.(You will see this errors in lightstep as well on the spans).
+1) Run layers one, two, and three with their respective scripts. These scripts can be found in each service directory. Each of them can run independently but just throw errors when the downstream service isn't running.(You will see this errors in lightstep as well on the spans).
+
+2) Run the collector with `docker-compose up`
+3) Make sure you have an in lightstep and update the access token to see traces in your project!
 
 ### Level One
 * Do `./one.sh` to run within /one
@@ -34,6 +37,7 @@ Run layers one, two, and three with their respective scripts. These scripts can 
 * Do `./three.sh` to run within /three
 * Hit this via `localhost:8083/api`
 * This just exist, feel free to run it solo!
+
 
 # Things you need to know
 1) Have a lightstep account. Create a free trial account here: [lightstep](https://go.lightstep.com/trial)
