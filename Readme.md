@@ -14,7 +14,7 @@ There are a number of environment variables and meta data that we need to define
 
 In general, we want to avoid restarting our services to update values, but some values should be updated on service restart such as `service.version`.
 
-With that in mind, we will set everything about our service within our service startup scripts, and put the `ACCESS_TOKEN` in the collector config. check out `otel-collector-config` for reference.
+With that in mind, we will set everything about our service within our service startup scripts and put the `ACCESS_TOKEN` in the collector config. check out `otel-collector-config` for reference.
 
 # How to run
 Run layers one, two, and three with their respective scripts. These scripts can be found in each service directory. Each of them can run independently but just throw errors when the downstream service isn't running.(You will see this errors in lightstep as well on the spans).
@@ -39,7 +39,7 @@ Run layers one, two, and three with their respective scripts. These scripts can 
 1) Have a lightstep account. Create a free trial account here: [lightstep](https://go.lightstep.com/trial)
 
 
-##$ NEED HELP?
+## NEED HELP?
 Send me an email at forrest@Lightstep.com
 
 I will provide the help.
