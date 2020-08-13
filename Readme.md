@@ -1,5 +1,5 @@
 # Description
-This repository is a working example in how to instrument 3 Java Spring Boot services with Open Telemetry. The scripts assume you have maven installed as they rebuild the artifact each time. 
+This repository is a working example in how to instrument 3 Java Spring Boot services with Open Telemetry using the Otel-Launchers lightstep has created. The launchers wrap Open Telemetry directly with the only goal of making it super clear as to what data you should include at start up. https://github.com/lightstep/otel-launcher-java 
 
 These services are VERY simple. All they do is return a simple greeting object(basically verbatim what is in the Spring Docs).
 
