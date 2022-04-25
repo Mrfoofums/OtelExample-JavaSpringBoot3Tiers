@@ -11,13 +11,14 @@ services:
       - "1888:1888"   # pprof extension
       - "13133:13133" # health_check extension
       - "55680:55680"
+      - "55681:55681"
       - "4317" #gRPC port
-  # jaeger-all-in-one:
-  #   image: jaegertracing/all-in-one:latest
-  #   ports:
-  #     - "16686:16686"
-  #     - "14268"
-  #     - "14250"
+  jaeger-all-in-one:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"
+      - "14268"
+      - "14250"
 
 
 
