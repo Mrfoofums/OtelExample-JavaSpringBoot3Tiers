@@ -2,6 +2,18 @@ receivers:
   otlp:
     protocols:
       grpc:
+      http:
+  hostmetrics:
+    scrapers:
+      cpu:
+      disk:
+      filesystem:
+      load:
+      memory:
+      network:
+      process:
+      processes:
+      swap:
 processors:
   batch:
   queued_retry:
@@ -15,6 +27,11 @@ exporters:
     loglevel: debug
     sampling_initial: 10
     sampling_thereafter: 1
+  otlphttp:
+    traces_endpoint: https://ingest.lightstep.com/traces/otlp/v0.9
+    metrics_endpoint: https://ingest.lightstep.com/metrics/otlp/v0.9
+    headers:
+      "lightstep-access-token": 6how6J0/2q4Dqxo6VYi6CKXwQJARSmcvydZYNIpti97UAsyjiCbH1aKTp3VoealzQouMtY0FA0xuwvDQhYJFU87fXMngEWngSxDKCSsI
   otlp:
     endpoint: "ingest.lightstep.com:443"
     headers:
@@ -22,7 +39,11 @@ exporters:
 service:
   extensions: [health_check]
   pipelines:
+    metrics:
+      receivers: [otlp]
+      exporters: [otlphttp, logging] 
     traces:
       receivers: [otlp]
       processors: [ batch, queued_retry]
-      exporters: [otlp, logging, jaeger]
+      exporters: [otlphttp, logging, jaeger]
+

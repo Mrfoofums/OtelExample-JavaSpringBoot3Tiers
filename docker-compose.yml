@@ -1,22 +1,23 @@
-version: "2"
+version: "3"
 services:
 
   # Collector
-  otel-collector:
-    image: otel/opentelemetry-collector:0.7.0
-    command: ["--config=/etc/otel-collector-config.yaml"]
+  collector:
+    image: otel/opentelemetry-collector:latest
+    command: ["--config=/etc/otel-collector-config.yaml",""]
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     ports:
       - "1888:1888"   # pprof extension
       - "13133:13133" # health_check extension
       - "55680:55680"
-  jaeger-all-in-one:
-    image: jaegertracing/all-in-one:latest
-    ports:
-      - "16686:16686"
-      - "14268"
-      - "14250"
+      - "4317" #gRPC port
+  # jaeger-all-in-one:
+  #   image: jaegertracing/all-in-one:latest
+  #   ports:
+  #     - "16686:16686"
+  #     - "14268"
+  #     - "14250"
 
 
 
