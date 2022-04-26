@@ -1,18 +1,18 @@
 receivers:
   otlp:
     protocols:
-      grpc:
       http:
-  # hostmetrics:
-  #   scrapers:
-  #     cpu:
-  #     disk:
-  #     filesystem:
-  #     load:
-  #     memory:
-  #     network:
-  #     process:
-  #     processes:
+      grpc:
+  hostmetrics:
+    scrapers:
+      cpu:
+      disk:
+      filesystem:
+      load:
+      memory:
+      network:
+      process:
+      processes:
 processors:
   batch:
 extensions:
@@ -20,28 +20,28 @@ extensions:
 exporters:
   jaeger:
     endpoint: jaeger-all-in-one:14250
-    insecure: true
+    # insecure: true
   logging:
     loglevel: debug
     sampling_initial: 10
     sampling_thereafter: 1
-  # otlphttp:
-  #   traces_endpoint: https://ingest.lightstep.com/traces/otlp/v0.9
-  #   metrics_endpoint: https://ingest.lightstep.com/metrics/otlp/v0.9
-  #   headers:
-  #     "lightstep-access-token": "GpLrgPHa7l+TNmAd2vaOmXNcZPDcah4qbbW0/9upX/WTZhALOoRlwPKKitYPgCELvQpEdx9W/ZzZlwRWoDoACiz+yFtnPOzxA0oG6e78"
-  otlp:
-    endpoint: "ingest.lightstep.com:443"
+  otlphttp:
+    traces_endpoint: https://ingest.lightstep.com/traces/otlp/v0.9
+    metrics_endpoint: https://ingest.lightstep.com/metrics/otlp/v0.9
     headers:
-      "lightstep-access-token": GpLrgPHa7l+TNmAd2vaOmXNcZPDcah4qbbW0/9upX/WTZhALOoRlwPKKitYPgCELvQpEdx9W/ZzZlwRWoDoACiz+yFtnPOzxA0oG6e78
+      "lightstep-access-token": "GpLrgPHa7l+TNmAd2vaOmXNcZPDcah4qbbW0/9upX/WTZhALOoRlwPKKitYPgCELvQpEdx9W/ZzZlwRWoDoACiz+yFtnPOzxA0oG6e78"
+  # otlp:
+  #   endpoint: "ingest.lightstep.com:443"
+  #   headers:
+  #     "lightstep-access-token": GpLrgPHa7l+TNmAd2vaOmXNcZPDcah4qbbW0/9upX/WTZhALOoRlwPKKitYPgCELvQpEdx9W/ZzZlwRWoDoACiz+yFtnPOzxA0oG6e78
 service:
   extensions: [health_check]
   pipelines:
     metrics:
       receivers: [otlp]
-      exporters: [otlp, logging] 
+      exporters: [otlphttp, logging] 
     traces:
       receivers: [otlp]
       processors: [ batch]
-      exporters: [otlp, logging, jaeger]
+      exporters: [otlphttp, logging, jaeger]
 

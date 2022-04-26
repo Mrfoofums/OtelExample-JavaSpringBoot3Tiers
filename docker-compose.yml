@@ -3,16 +3,17 @@ services:
 
   # Collector
   collector:
-    image: otel/opentelemetry-collector:latest
+    image: otel/opentelemetry-collector:0.43.0
     command: ["--config=/etc/otel-collector-config.yaml",""]
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     ports:
       - "1888:1888"   # pprof extension
+      - "4318:4318"
       - "13133:13133" # health_check extension
       - "55680:55680"
       - "55681:55681"
-      - "4317" #gRPC port
+      - "4317:4317" #gRPC port
   jaeger-all-in-one:
     image: jaegertracing/all-in-one:latest
     ports:
