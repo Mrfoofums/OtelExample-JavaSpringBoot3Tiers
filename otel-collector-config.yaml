@@ -25,15 +25,10 @@ exporters:
     loglevel: debug
     sampling_initial: 10
     sampling_thereafter: 1
-  # otlphttp:
-  #   traces_endpoint: https://ingest.lightstep.com/traces/otlp/v0.9
-  #   metrics_endpoint: https://ingest.lightstep.com/metrics/otlp/v0.9
-  #   headers:
-  #     "lightstep-access-token": "GpLrgPHa7l+TNmAd2vaOmXNcZPDcah4qbbW0/9upX/WTZhALOoRlwPKKitYPgCELvQpEdx9W/ZzZlwRWoDoACiz+yFtnPOzxA0oG6e78"
   otlp:
     endpoint: "ingest.lightstep.com:443"
     headers:
-      "lightstep-access-token": GpLrgPHa7l+TNmAd2vaOmXNcZPDcah4qbbW0/9upX/WTZhALOoRlwPKKitYPgCELvQpEdx9W/ZzZlwRWoDoACiz+yFtnPOzxA0oG6e78
+      "lightstep-access-token": somelongtokenfromyoursettingspage
 service:
   extensions: [health_check]
   pipelines:
