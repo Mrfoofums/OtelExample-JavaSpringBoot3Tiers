@@ -1,0 +1,7 @@
+processors:
+  # Data sources: traces
+  attributes:
+    actions:
+      - key: environment
+        value: forrest_computer
+        action: insert

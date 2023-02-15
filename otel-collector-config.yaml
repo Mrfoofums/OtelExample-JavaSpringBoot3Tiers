@@ -13,10 +13,14 @@ receivers:
       network:
       process:
       processes:
-      swap:
 processors:
+  # Data sources: traces
+  attributes:
+    actions:
+      - key: environment
+        value: YOUR_COOL_COMPANY
+        action: insert
   batch:
-  queued_retry:
 extensions:
   health_check: {}
 exporters:
@@ -31,19 +35,19 @@ exporters:
     traces_endpoint: https://ingest.lightstep.com/traces/otlp/v0.9
     metrics_endpoint: https://ingest.lightstep.com/metrics/otlp/v0.9
     headers:
-      "lightstep-access-token": 6how6J0/2q4Dqxo6VYi6CKXwQJARSmcvydZYNIpti97UAsyjiCbH1aKTp3VoealzQouMtY0FA0xuwvDQhYJFU87fXMngEWngSxDKCSsI
+      "lightstep-access-token": XqyjLkWt76AtkzrwWr+Ja7JBXT9G4CvQVPGljqlCZrGvXeaozjnLPVSYz0CLKaltLA5oKJKaBahsTUnIuJRoqI6hrSNlJqKRz8zGA5x9
   otlp:
     endpoint: "ingest.lightstep.com:443"
     headers:
-      "lightstep-access-token": 6how6J0/2q4Dqxo6VYi6CKXwQJARSmcvydZYNIpti97UAsyjiCbH1aKTp3VoealzQouMtY0FA0xuwvDQhYJFU87fXMngEWngSxDKCSsI
+      "lightstep-access-token": XqyjLkWt76AtkzrwWr+Ja7JBXT9G4CvQVPGljqlCZrGvXeaozjnLPVSYz0CLKaltLA5oKJKaBahsTUnIuJRoqI6hrSNlJqKRz8zGA5x9
 service:
   extensions: [health_check]
   pipelines:
     metrics:
       receivers: [otlp]
-      exporters: [otlphttp, logging] 
+      exporters: [otlp, logging] 
     traces:
       receivers: [otlp]
-      processors: [ batch, queued_retry]
-      exporters: [otlphttp, logging, jaeger]
+      processors: [ batch, attributes]
+      exporters: [otlp, logging, jaeger]
 
